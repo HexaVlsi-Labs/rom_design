@@ -1,0 +1,33 @@
+module rom(clk,rst,addr,data);
+  input clk,rst;
+  input [3:0]addr;
+  output reg [4:0]data;
+   reg [7:0] rom_data [15:0];
+  initial begin
+  rom_data[0]  = 8'h00; // Address 0: Data 0
+        rom_data[1]  = 8'h01; // Address 1: Data 1
+        rom_data[2]  = 8'h02; // Address 2: Data 2
+        rom_data[3]  = 8'h03; // Address 3: Data 3
+        rom_data[4]  = 8'h04; // Address 4: Data 4
+        rom_data[5]  = 8'h05; // Address 5: Data 5
+        rom_data[6]  = 8'h06; // Address 6: Data 6
+        rom_data[7]  = 8'h07; // Address 7: Data 7
+        rom_data[8]  = 8'h08; // Address 8: Data 8
+        rom_data[9]  = 8'h09; // Address 9: Data 9
+        rom_data[10] = 8'h0A; // Address 10: Data A
+        rom_data[11] = 8'h0B; // Address 11: Data B
+        rom_data[12] = 8'h0C; // Address 12: Data C
+        rom_data[13] = 8'h0D; // Address 13: Data D
+        rom_data[14] = 8'h0E; // Address 14: Data E
+        rom_data[15] = 8'h0F; // Address 15: Data F
+    end
+  always@(posedge clk)
+    begin
+    if(rst)
+      data=4'b0000;
+  else
+    data=addr;
+    end
+endmodule
+  
+      
