@@ -1,0 +1,25 @@
+module tb;
+  reg clk,rst;
+  wire [4:0]data;
+  reg [3:0]addr;
+  rom all(clk,rst,addr,data);
+  always #1 clk=~clk;
+  initial begin
+    clk=1'b0;
+    rst=1'b1;
+   #1 rst=1'b0;
+    addr=4'b1000;
+    #1 addr=4'b1010;
+    #1 addr=4'b1011;
+    #1 addr=4'b1100;
+    #1 addr=4'b1000;
+  end
+  initial begin
+    $monitor("clk=%b,rst=%b,addr=%b,data=%b",clk,rst,addr,data);
+    #10 $finish;
+  end
+  initial begin 
+    $dumpfile("dump.vcd");
+    $dumpvars(1);
+  end
+endmodule
